@@ -1,6 +1,7 @@
 body{
-    background-color: lightblue !important;
+    background-color: #333333 !important;
     font-family: arial, helvetica, sans-serif;
+    color: lightblue !important;
 }
 
 .TaskName{
