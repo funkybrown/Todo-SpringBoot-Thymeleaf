@@ -1,0 +1,73 @@
+<html>
+<head>
+    <title>Completed Tasks</title>
+    <!--<link rel="stylesheet" th:href="@{/css/style.css}"></link>-->
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"></link>
+    <!--Bootstrap JS-->
+    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</link>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand">SpringBoot Todo App</a>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-dismissable"></div>
+        <h1>Home</h1>
+        <p>Welcome to Spring Boot, Thymleaf Todo app by&nbsp;</p>
+        <div class="menu"><h2>Menu</h2>
+            <ul class="nav nav-pills">
+                <li class="active"><a href="/">Home</a></li>
+                    <li>
+                        <a href="/">Todo List</a>
+                    </li>
+                    <li>
+                        <a href="/completed/">Completed</a>
+                    </li>
+            </ul>
+        </div>
+    
+    
+<h2>Completed</h2>
+<div th:unless="${#lists.isEmpty(tasks)}">
+<dl th:each="task : ${tasks}">
+    <dt>
+        <div>Task: <span class="name completed-task" th:text="${task.Name}"></span></div>
+    </dt>
+    <dd class="TaskDetail"> Created: 
+    <span th:if="${task.CreateTime}"
+          th:text="${#temporals.format(task.CreateTime, 'dd/MMM/yyyy HH:mm')}"></span>
+    <span th:if="${task.CreateTime eq null}">
+        No Create Time available</span>
+    </dd>
+     <dd class="TaskDetail"> Completed: 
+    <span th:if="${task.CompleteTime}"
+          th:text="${#temporals.format(task.CompleteTime, 'dd/MMM/yyyy HH:mm')}"></span>
+    <span th:if="${task.CompleteTime eq null}">
+        No Complete Time available</span>
+    </dd>
+    <dd class="TaskDetail"> Completed: 
+    <span th:text="${task.Completed}"></span>
+    </dd>
+    <a th:href="@{/task/} + ${task._id}">Done</a>
+    <a th:href="@{/delete/} + ${task._id}">Delete</a>
+</dl>
+    
+</div>
+
+<div th:if="${#lists.isEmpty(tasks)}">
+    <p>You have no tasks in your list</p>
+</div>
+
+<hr/>
+
+<!-- end of container block -->
+</div>
+</body>
+</html>
