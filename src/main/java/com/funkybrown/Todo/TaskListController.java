@@ -27,12 +27,14 @@ public class TaskListController {
     @RequestMapping(value = "/", method= RequestMethod.GET)
     public String tasklist(Model model){
         List<Task> taskList = taskRepository.findByCompleted(false);
-
+        
         if (taskList != null){
             model.addAttribute("tasks", taskList);
         }
+        
+        model.addAttribute("content", "taskList");     
 
-        return "taskList";
+        return "index";
     }
     
     @RequestMapping(value = "/completed/", method= RequestMethod.GET)
@@ -42,8 +44,10 @@ public class TaskListController {
         if (taskList != null){
             model.addAttribute("tasks", taskList);
         }
+        
+        model.addAttribute("content", "completedTasks");     
 
-        return "taskList";
+        return "index";
     }
     
     @RequestMapping(value = "/", method= RequestMethod.POST)

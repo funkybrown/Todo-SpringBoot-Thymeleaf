@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <title>Task List</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}"></link>
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"></link>
+    <!--Bootstrap JS-->
+    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+</head>
+<!--<head lang="en" th:replace="fragments/header :: header"> </head>-->
+  <body>
+      <div class="container">
+        <div class="navbar navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <a href="/" class="navbar-brand">SpringBoot Todo App</a>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-dismissable"></div>
+        <h1>Home</h1>
+        <p>Welcome to Spring Boot, Thymleaf Todo app by&nbsp;</p>
+        <div class="menu"><h2>Menu</h2>
+            <ul class="nav nav-pills">
+                <li class="active"><a href="/">Home</a></li>
+                    <li>
+                        <a href="/">Todo List</a>
+                    </li>
+                    <li>
+                        <a href="/completed/">Completed</a>
+                    </li>
+            </ul>
+        </div>
+        <div class="container">
+            <div th:replace="@{${content}} :: ${content}"></div>
+        </div>
+     
+      </div>
+  
+<!--<div lang="en" th:replace="fragments/footer :: footer"> </div> -->
+</body>
+</html>
+
+<!-- https://stackoverflow.com/questions/36663038/spring-thymeleaf-header-and-footer-dynamic-includes -->
+    
+    
+        
