@@ -50,6 +50,13 @@ public class TaskListController {
         return "index";
     }
     
+    @RequestMapping(value = "/task/{id}", method= RequestMethod.GET)
+    public String completeTask(@PathVariable("id") String id){
+        taskRepository.completeOneTask("tasks", id);
+        return "redirect:/";
+    }
+    
+    
     @RequestMapping(value = "/", method= RequestMethod.POST)
     public String addToTasklist(Task task){
         taskRepository.insert(task);
