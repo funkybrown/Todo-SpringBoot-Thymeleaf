@@ -5,13 +5,14 @@
  */
 package com.funkybrown.Todo;
 
+import java.time.LocalDateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.List;
+import java.util.List; 
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
@@ -21,20 +22,19 @@ public class TaskListController {
 
     @Autowired
     public TaskListController(TaskRepository taskRepository){
-        this.taskRepository = taskRepository;
+        this.taskRepository = taskRepository; 
     }
     
-    @RequestMapping(value = "/", method= RequestMethod.GET)
+    @RequestMapping(value = "/tasks", method= RequestMethod.GET)
     public String tasklist(Model model){
         List<Task> taskList = taskRepository.findByCompleted(false);
-        
+         
         if (taskList != null){
             model.addAttribute("tasks", taskList);
         }
         
         model.addAttribute("content", "taskList");     
-
-        return "index";
+        return "index"; 
     }
     
     @RequestMapping(value = "/completed/", method= RequestMethod.GET)
@@ -43,30 +43,30 @@ public class TaskListController {
 
         if (taskList != null){
             model.addAttribute("tasks", taskList);
-        }
-        
+        }  
+         
         model.addAttribute("content", "completedTasks");     
 
-        return "index";
-    }
+        return "index"; 
+    }    
     
-    @RequestMapping(value = "/task/{id}", method= RequestMethod.GET)
+    @RequestMapping(value = "/task/{id}", method= RequestMethod.POST)
     public String completeTask(@PathVariable("id") String id){
-        taskRepository.completeOneTask("tasks", id);
-        return "redirect:/";
+       taskRepository.completeOneTask("tasks", id);
+        return "redirect:/tasks";
     }
-    
     
     @RequestMapping(value = "/", method= RequestMethod.POST)
     public String addToTasklist(Task task){
+        task.setCreateTime(LocalDateTime.now());
         taskRepository.insert(task);
-        return "redirect:/";
+        return "redirect:/tasks"; 
     }
     
      @RequestMapping(value = "/delete/{id}", method= RequestMethod.GET)
     public String DeleteFromTaskList(@PathVariable("id") String id){
         taskRepository.delete(id);
-        return "redirect:/";
+        return "redirect:/tasks";
     }
    
 }

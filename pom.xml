@@ -46,12 +46,12 @@
             <artifactId>spring-boot-devtools</artifactId> <!-- This enables reload when you save a controller edit -->
             <optional>true</optional>
         </dependency>  
-        <!-- Webjars for Bootstrap -->
+        <!-- Webjars for Bootstrap 
         <dependency>
           <groupId>org.webjars</groupId>
           <artifactId>bootstrap</artifactId>
           <version>3.3.7-1</version>
-        </dependency>
+        </dependency> -->
     </dependencies>
     <build>
         <plugins>

@@ -24,8 +24,7 @@ public class TaskRepositoryImpl implements CustomTaskRepository {
     MongoTemplate mongoTemplate;
 
     @Override
-    public boolean completeOneTask(String domain, String id) {
-
+    public boolean completeOneTask(String domain, String id) { // what is this domain used for ?????????????????????????????????????????////
         Query query = new Query(Criteria.where("_id").is(id));
         Update update = new Update();
         update.set("completed", true);

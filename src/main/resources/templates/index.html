@@ -3,10 +3,11 @@
     <head>
     <title>Task List</title>
     <link rel="stylesheet" th:href="@{/css/style.css}"></link>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.css}"></link>
     <!--Bootstrap CSS-->
-    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"></link>
+    <!--<link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css"></link>-->
     <!--Bootstrap JS-->
-    <script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>
+    <!--<script src="/webjars/bootstrap/3.3.7-1/js/bootstrap.min.js"></script>-->
 </head>
 <!--<head lang="en" th:replace="fragments/header :: header"> </head>-->
   <body>
@@ -25,7 +26,7 @@
             <ul class="nav nav-pills">
                 <li class="active"><a href="/">Home</a></li>
                     <li>
-                        <a href="/">Todo List</a>
+                        <a href="/tasks">Todo List</a>
                     </li>
                     <li>
                         <a href="/completed/">Completed</a>

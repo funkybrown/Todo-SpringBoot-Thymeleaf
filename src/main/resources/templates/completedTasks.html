@@ -18,11 +18,8 @@
         <span th:if="${task.CompleteTime eq null}">
             No Complete Time available</span>
         </dd>
-        <dd class="TaskDetail"> Completed: 
-        <span th:text="${task.Completed}"></span>
-        </dd>
-        <a th:href="@{/task/} + ${task._id}">Done</a>
-        <a th:href="@{/delete/} + ${task._id}">Delete</a>
+      <!--  <a th:href="@{/task/} + ${task._id}">Done</a> -->
+      <!-- <a th:href="@{/delete/} + ${task._id}">Delete</a> -->
     </dl>
 
     </div>
