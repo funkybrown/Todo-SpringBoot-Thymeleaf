@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List; 
-import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class TaskListController {
@@ -37,7 +36,7 @@ public class TaskListController {
         return "index"; 
     }
     
-    @RequestMapping(value = "/completed/", method= RequestMethod.GET)
+    @RequestMapping(value = "/completed", method= RequestMethod.GET)
     public String compltedTasklist(Model model){
         List<Task> taskList = taskRepository.findByCompleted(true);
 
@@ -50,24 +49,11 @@ public class TaskListController {
         return "index"; 
     }    
     
-    @RequestMapping(value = "/task/{id}", method= RequestMethod.POST)
-    public String completeTask(@PathVariable("id") String id){
-       taskRepository.completeOneTask("tasks", id);
-        return "redirect:/tasks";
-    }
-    
-    @RequestMapping(value = "/", method= RequestMethod.POST)
+    @RequestMapping(value = "/tasks", method= RequestMethod.POST)
     public String addToTasklist(Task task){
         task.setCreateTime(LocalDateTime.now());
         taskRepository.insert(task);
         return "redirect:/tasks"; 
     }
-    
-     @RequestMapping(value = "/delete/{id}", method= RequestMethod.GET)
-    public String DeleteFromTaskList(@PathVariable("id") String id){
-        taskRepository.delete(id);
-        return "redirect:/tasks";
-    }
    
 }
-
