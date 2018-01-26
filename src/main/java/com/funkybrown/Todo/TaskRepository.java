@@ -12,6 +12,8 @@ public interface TaskRepository extends MongoRepository<Task, String>, CustomTas
     
     List<Task> findByCompleted(boolean completed);
     
+    List<Task> findByName(String name);
+    
 }
 
 

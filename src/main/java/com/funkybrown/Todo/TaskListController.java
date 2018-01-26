@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List; 
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class TaskListController {
@@ -28,6 +29,18 @@ public class TaskListController {
     public String tasklist(Model model){
         List<Task> taskList = taskRepository.findByCompleted(false);
          
+        if (taskList != null){
+            model.addAttribute("tasks", taskList);
+        }
+        
+        model.addAttribute("content", "taskList");     
+        return "index"; 
+    }
+    
+     @RequestMapping(value = "/task/{name}", method= RequestMethod.GET)
+    public String getTaskByName(Model model, @PathVariable("name") String name){
+       List<Task> taskList = taskRepository.findByName(name);
+        
         if (taskList != null){
             model.addAttribute("tasks", taskList);
         }
